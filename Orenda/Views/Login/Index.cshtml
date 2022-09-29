@@ -1,34 +1,4 @@
-﻿
-@{ Layout = null;}
-@*<h2>LOGIN</h2>
-
-    <form action="/Login/ChecarLogin" method="post">
-         <div>
-
-              <div class="row">
-                  <div class="col-sm-4 col-sm-offset-4 text-left" >
-                      <label for="userId" class="form-label"> Usuário</label>
-                      <input type="email" class="form-control" name="Email" id="Email" placeholder="nome@domino.com" />
-                  </div>
-              </div>
-              <div class="row">
-                  <div cldass="col-sm-4 col-sm-offset-4 text-left">
-                      <label for="userPassword" class="form-label"> Senha</label>
-                      <input type="password" class="form-control" name="PassWord" id="PassWord" placeholder="senha123!*;HH" />
-                  </div>
-              </div>
-              <p class="btn col-sm-offset-4">
-                  @ViewBag.Erro
-              </p>
-              <div class="row">
-                  <div class="btn col-sm-offset-5  ">
-                      <button class="btn btn-primary" type="submit"> Entrar</button>
-                  </div>
-              </div>
-          </div>
-
-      </form>*@
-
+﻿@{ Layout = null;}
 <!DOCTYPE html>
 <html lang="pt-br">
 <head>
@@ -86,9 +56,6 @@
                                     <label class="label_field hidden">hidden label</label>
                                     @ViewBag.Erro
                                 </p>
-                                @*<div class="center">
-            <button class="main_bt" onclick="Login.ChecarLogin();">Sing In</button>
-        </div>*@
                                 <div class="btn col-sm-offset-1">
                                     <label class="label_field hidden">hidden label</label>
                                     <button class="main_bt">Sing In</button>
