@@ -9,27 +9,17 @@ namespace Orenda.Models
 {
     public class Usuarios
     {
-        //private readonly static string _conn = @"Data Source=.\DESKTOP-3NC3AOG;AttachDbFilenameC:\Program Files\Microsoft SQL Server\MSSQL15.MSSQLSERVER\MSSQL\DATA\new.mdf;Integrated Security=True;Connect Timeout=30;User Instance=True";
-
-        private readonly static string _conn = @"Data Source=DESKTOP-3NC3AOG;Initial Catalog=new;Integrated Security=SSPI;Persist Security Info=False;";
-
         public int Id { get; set; }
         public string Email { get; set; }
         public string Usuario { get; set; }
         public string Senha { get; set; }
 
-        static void Main(string[] args)
-        {
-            SqlConnection minhaConnection =
-                new SqlConnection(@"Data Source=DESKTOP-3NC3AOG;Initial Catalog=new;Integrated Security=SSPI;Persist Security Info=False;");
-            
-            minhaConnection.Open();
-        }
+
+        private readonly static string _conn = @"Data Source=DESKTOP-3NC3AOG;Initial Catalog=new;Integrated Security=SSPI;Persist Security Info=False;";
+        private static SqlConnection minhaConnection = new SqlConnection(_conn);
 
         public bool Login()
         {
-
-
             var sql = "Select Id, Nome, Senha From Users Where Email = '" + this.Email + "' ";
 
             try
@@ -50,13 +40,14 @@ namespace Orenda.Models
                                     {
                                         this.Id = Convert.ToInt32(dr["Id"]);
                                         this.Usuario = dr["Nome"].ToString();
-                                        return true;
+                                        minhaConnection.Close();
+                                    return true;
                                     }
                                 }
                             }
+                            minhaConnection.Close();
                             return false;
                         }
-
                     }
                 }
             }
@@ -66,6 +57,7 @@ namespace Orenda.Models
                 //Console.WriteLine(e);
                 //return false;
                 //throw new InvalidOperationException("Os dados não podem sem lidos", e);
+                minhaConnection.Close();
                 return false;
             }
         }

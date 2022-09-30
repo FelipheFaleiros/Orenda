@@ -51,5 +51,20 @@ namespace Orenda.Controllers
                 return null;
             }
         }
+
+        public ActionResult Cadastro()
+        {
+            if (Session["Autorizado"] != null)
+            {
+                ViewBag.Message = "Your contact page.";
+
+                return Redirect( "/Cliente/Cadastro");
+            }
+            else
+            {
+                Response.Redirect("/Login/Index");
+                return null;
+            }
+        }
     }
 }
