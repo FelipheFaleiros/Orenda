@@ -41,7 +41,7 @@
                 <div class="sidebar_blog_1">
                     <div class="sidebar-header">
                         <div class="logo_section">
-                            <a href="index.html"><img class="logo_icon img-responsive" src="../../images/logo/logo_icon-removebg.png" alt="#" /></a>
+                            <a href="index.html"><img class="logo_icon img-responsive" src="../../images/logo/logo_icon-removebg.png" alt="# " /></a>
                         </div>
                     </div>
                     <div class="sidebar_user_info">
@@ -74,7 +74,7 @@
                         <li class="active">
                             <a href="#element" id="TLink1" aria-expanded="false" class="dropdown-toggle" onclick="toggle('relatorio', 'TLink1')"><i class="fa fa-diamond purple_color"></i> <span>Relatórios</span></a>
                             <ul style="display: none;" id="relatorio">
-                                <li><a href="relatoriogeral.html">> <span>Relatórios Gerais</span></a></li>
+                                <li><a onclick=RelClient()>> <span>Relatório de Clientes</span></a></li>
                                 <li><a href="relatoriovendas.html">> <span>Relatório de Vendas</span></a></li>
                                 <li><a href="relatorioestoque.html">> <span>Relatório de estoque</span></a></li>
                                 <li><a href="relatorioHoras.html">> <span>Relatório Horas de Trabalho</span></a></li>
@@ -101,13 +101,13 @@
                                     <a onclick=FormCadastroClient()>> <span>Cadastrar Cliente</span></a>
                                 </li>
                                 <li>
-                                    <a href="produto.html">> <span>Cadastrar Produto</span></a>
+                                    <a onclick=FormCadastroProd()>> <span>Cadastrar Produto</span></a>
                                 </li>
                                 <li>
-                                    <a href="estoque.html">> <span>Cadastrar Estoque</span></a>
+                                    <a onclick=FormCadastroEstoq()>> <span>Cadastrar Estoque</span></a>
                                 </li>
                                 <li>
-                                    <a href="fornecedor.html">> <span>Cadastrar Fornecedor</span></a>
+                                    <a onclick=FormCadastroFornec()>> <span>Cadastrar Fornecedor</span></a>
                                 </li>
                             </ul>
                         </li>
@@ -125,7 +125,7 @@
                                 <i class="fa fa-bars" aria-hidden="true"></i>
                             </button>
                             <div class="logo_section">
-                                <a href="index.html"><img class="img-responsive" src="../../images/logo/logoClaroSimples.png" alt="#" /></a>
+                                <a href="index.html"><img class="img-responsive" src="../../images/logo/logoClaroSimples.png" onclick=Home() alt="#" /></a>
                             </div>
                             <div class="right_topbar">
                                 <div class="icon_info">
@@ -189,9 +189,6 @@
 @*    <script src="https://code.jquery.com/jquery-3.1.1.slim.min.js"></script>*@
 
 
-
-
-
     <style type="text/css" media="screen">
         #navbar li, #navbar2 li {
             display: inline;
@@ -213,6 +210,7 @@
             }
         }
 
+        //rotas para os formularios
         function FormCadastroClient() {
             $.get('@Url.Action("Cadastro", "Cliente")')
                 .done(function(mensage) {
@@ -220,11 +218,101 @@
                 })
                 .fail(function(error) {
                     console.log(error.responseText);
-                });
+                }
+            );
+        }
+
+        function FormCadastroProd() {
+            $.get('@Url.Action("Cadastro", "Produto")')
+                .done(function(mensage) {
+                    $(".full_container").html(mensage);
+                })
+            .fail(function(error) {
+                    console.log(error.responseText);
+                }
+            );
+        }
+
+        function FormCadastroEstoq() {
+            $.get('@Url.Action("Cadastro", "Estoque")')
+                .done(function(mensage) {
+                    $(".full_container").html(mensage);
+                })
+            .fail(function(error) {
+                    console.log(error.responseText);
+                }
+            );
+        }
+
+        function FormCadastroFornec() {
+            $.get('@Url.Action("Cadastro", "Fornecedor")')
+                .done(function(mensage) {
+                    $(".full_container").html(mensage);
+                })
+            .fail(function(error) {
+                    console.log(error.responseText);
+                }
+            );
+        }
+
+        //Voltar para Home
+        function Home() {
+            debugger;
+            $.get('@Url.Action("Index", "Home")')
+                .done(function(mensage) {
+                    $(".full_container");
+                })
+                .fail(function(error) {
+                        console.log(error.responseText);
+                    }
+                );
+        }
+
+        //Rotas para os relatorios
+        function RelClient() {
+            $.get('@Url.Action("Relatorio", "Cliente")')
+                .done(function(mensage) {
+                    $(".full_container").html(mensage);
+                })
+            .fail(function(error) {
+                    console.log(error.responseText);
+                }
+            );
+        }
+
+        function RelProd() {
+            $.get('@Url.Action("Relatorio", "Produto")')
+                .done(function(mensage) {
+                    $(".full_container").html(mensage);
+                })
+                .fail(function(error) {
+                        console.log(error.responseText);
+                    }
+                );
+        }
+
+        function RelEstoq() {
+            $.get('@Url.Action("Relatorio", "Estoque")')
+                .done(function(mensage) {
+                    $(".full_container").html(mensage);
+                })
+                .fail(function(error) {
+                        console.log(error.responseText);
+                    }
+                );
+        }
+
+        function RelFornec() {
+            $.get('@Url.Action("Relatorio", "Fornecedor")')
+                .done(function(mensage) {
+                    $(".full_container").html(mensage);
+                })
+                .fail(function(error) {
+                        console.log(error.responseText);
+                    }
+                );
         }
 
     </script>
-
-
 </body>
 </html>

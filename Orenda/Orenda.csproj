@@ -121,12 +121,18 @@
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClienteController.cs" />
+    <Compile Include="Controllers\EstoqueController.cs" />
+    <Compile Include="Controllers\FornecedorController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\ProdutoController.cs" />
     <Compile Include="Controllers\SairController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Models\Produtos.cs" />
+    <Compile Include="Models\Estoques.cs" />
+    <Compile Include="Models\Fornecedores.cs" />
     <Compile Include="Models\Clientes.cs" />
     <Compile Include="Models\Usuarios.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -948,13 +954,16 @@
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\Cliente\Cadastro.cshtml" />
     <Content Include="Views\Cliente\Relatorio.cshtml" />
+    <Content Include="Views\Produto\Cadastro.cshtml" />
+    <Content Include="Views\Fornecedor\Cadastro.cshtml" />
+    <Content Include="Views\Estoque\Cadastro.cshtml" />
+    <Content Include="Views\Fornecedor\Relatorio.cshtml" />
+    <Content Include="Views\Estoque\Relatorio.cshtml" />
+    <Content Include="Views\Produto\Relatorio.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="js\js\" />
-    <Folder Include="Views\Estoque\" />
-    <Folder Include="Views\Fornecedor\" />
-    <Folder Include="Views\Produto\" />
     <Folder Include="Views\Sair\" />
   </ItemGroup>
   <ItemGroup>

@@ -3,13 +3,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Orenda.Models;
 
 namespace Orenda.Controllers
 {
-    public class ClienteController : Controller
+    public class EstoqueController : Controller
     {
-        // GET: Cliente
+        // GET: Estoque
         [HttpGet]
         public ActionResult Cadastro()
         {
@@ -21,11 +20,11 @@ namespace Orenda.Controllers
             {
                 Response.Redirect("/Login/Index");
                 return null;
-            }   
+            }
         }
 
         [HttpPost]
-        public ActionResult Cadastrar(Clientes cadastrar)
+        public ActionResult Cadastrar(Estoques cadastrar)
         {
             cadastrar.Cadastrar();
             return Content("TOP");
