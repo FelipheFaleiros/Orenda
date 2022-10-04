@@ -5,6 +5,14 @@ using System.Web;
 using System.Web.Mvc;
 using Orenda.Models;
 
+using Newtonsoft.Json;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+
 namespace Orenda.Controllers
 {
     public class ClienteController : Controller
@@ -35,7 +43,7 @@ namespace Orenda.Controllers
         {
             if (Session["Autorizado"] != null)
             {
-                return View();
+                return View(Clientes.RecuperarList());
             }
             else
             {

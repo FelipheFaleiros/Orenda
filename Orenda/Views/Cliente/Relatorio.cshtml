@@ -1,4 +1,5 @@
-﻿
+﻿@model IEnumerable<Orenda.Models.Clientes>
+
 <div class="midde_cont">
     <div class="container-fluid">
         <div class="row column_title">
@@ -33,26 +34,28 @@
                                         <th>Ativo</th>
                                         <th>Editar</th>
                                         <th>Excluir</th>
-                                        
+
                                     </tr>
                                 </thead>
                                 <tbody>
-                                    <tr>
-                                        <td>1</td>
-                                        <td>Felihe Faleiros</td>
-                                        <td>35444455687</td>
-                                        <td>José Zuanazzi nº 2816</td>
-                                        <td>Franca</td>
-                                        <td>SP</td>
-                                        <td>SIM</td>
-                                        <td>
-                                            <button class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Edit"><i class="fa fa-edit"></i></button>
-                                        </td>
-                                        <td >
-                                            <button class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Delete"><i class="fa fa-trash"></i></button>
-                                        </td>
-                                    </tr>
-                                   
+                                    @foreach (var item in Model)
+                                    {
+                                        <tr>
+                                            <td>@item.CodCliente</td>
+                                            <td>@item.Nome</td>
+                                            <td>@item.CPF</td>
+                                            <td>@item.Endereco</td>
+                                            <td>@item.Cidade</td>
+                                            <td>@item.Estado</td>
+                                            <td>@item.Situacao</td>
+                                            <td>
+                                                <button id="btn_alterar" class="btn btn-success btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Editar"><i class="fa fa-edit"></i></button>
+                                            </td>
+                                            <td>
+                                                <button id="btn_excluir" class="btn btn-danger btn-sm rounded-0" type="button" data-toggle="tooltip" data-placement="top" title="Deletar"><i class="fa fa-trash"></i></button>
+                                            </td>
+                                        </tr>
+                                    }
                                 </tbody>
                             </table>
                         </div>
@@ -62,3 +65,15 @@
         </div>
     </div>
 </div>
+
+@section Scripts{
+    <script>
+        $(document).on('click', '#btn_alterar', function () {
+                alert(1);
+            })
+        .on('click', '#btn_excluir', function () {
+            alert(2);
+        })
+    </script>
+
+}

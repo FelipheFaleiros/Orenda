@@ -23,12 +23,12 @@ namespace Orenda.Controllers
             }
         }
 
-        [HttpPost]
-        public ActionResult Cadastrar(Fornecedores cadastrar)
-        {
-            cadastrar.Cadastrar();
-            return Content("TOP");
-        }
+        //[HttpPost]
+        //public ActionResult Cadastrar(Fornecedores cadastrar)
+        //{
+        //    cadastrar.Cadastrar();
+        //    return Content("TOP");
+        //}
 
         public ActionResult Relatorio()
         {
