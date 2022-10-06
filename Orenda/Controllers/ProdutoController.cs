@@ -1,8 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿
 using System.Web.Mvc;
+using Orenda.Models;
 
 namespace Orenda.Controllers
 {
@@ -23,12 +21,12 @@ namespace Orenda.Controllers
             }
         }
 
-        //[HttpPost]
-        //public ActionResult Cadastrar(Produtos cadastrar)
-        //{
-        //    cadastrar.Cadastrar();
-        //    return Content("TOP");
-        //}
+        [HttpPost]
+        public ActionResult Cadastrar(Produtos cadastrar)
+        {
+            cadastrar.Cadastrar();
+            return Content("TOP");
+        }
 
         public ActionResult Relatorio()
         {

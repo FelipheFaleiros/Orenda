@@ -25,31 +25,31 @@
                                     <form action="#" class="signup-form">
                                         <div class="form-group">
                                             <label class="label" for="name">Nome do Produto</label>
-                                            <input type="text" class="form-control" placeholder="produto x">
+                                            <input type="text" id="nome" class="form-control" placeholder="produto x">
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-5">
                                                 <label class="label" for="Registro">Quantidade</label>
-                                                <input type="number" class="form-control" placeholder="unidade qtd/Kg">
+                                                <input type="number" id="quantidade" class="form-control" placeholder="unidade qtd/Kg">
                                             </div>
                                             <div class="form-group col-md-5 offset-md-2">
                                                 <label class="label" for="Endereço">Validade</label>
-                                                <input type="date" class="form-control">
+                                                <input type="date" id="validade" class="form-control">
                                             </div>
                                         </div>
                                         <div class="form-row">
                                             <div class="form-group col-md-5">
-                                                <label class="label" for="Cidade">Preço</label>
-                                                <input type="number" class="form-control" placeholder="R$">
+                                                <label class="label" for="Cidade">Preço R$:</label>
+                                                <input class="form-control" id="preco" onkeypress="mascaraDinheiro(this,mreais)"  placeholder="1000.00" )>
                                             </div>
                                             <div class="form-group col-md-5 offset-md-2">
                                                 <label class="label" for="Estado">Tempo de Produção</label>
-                                                <input type="time" class="form-control">
+                                                <input type="text" step='1' min="00:00:00" max="20:00:00" id="tempo" class="form-control">
                                             </div>
                                         </div><br>
                                         <p class="text-center">Todos os dados estão corretos?</p>
                                         <div class="form-group d-flex justify-content-end mt-4">
-                                            <button type="submit" class="btn btn-primary submit"><span class="fa fa-paper-plane"></span></button>
+                                            <button type="submit" onclick="CriarCadastro()" class="btn btn-primary submit"><span class="fa fa-paper-plane"></span></button>
                                         </div>
                                     </form>
 
@@ -58,8 +58,50 @@
                         </div>
                     </section>
                 </div>
-                <div class="col-md-2"></div>
             </div>
         </div>
     </div>
 </div>
+
+<script>
+    function mascaraDinheiro(o, f) {
+        v_obj = o
+        v_fun = f
+        setTimeout("execmascara()", 1)
+    }
+
+    function execmascara() {
+        v_obj.value = v_fun(v_obj.value)
+    }
+
+    function mreais(v) {
+        v = v.replace(/\D/g, "") //Remove tudo o que não é dígito
+        v = v.replace(/(\d{2})$/, ".$1") //Coloca a virgula
+        //v = v.replace(/(\d+)(\d{3},\d{2})$/g, "$1.$2") //Coloca o primeiro ponto
+            return v;
+        
+    }
+
+    function CriarCadastro() {
+        debugger;
+        var cadastrar = {
+            nome: $("#nome").val(),
+            quantidade: $("#quantidade").val(),
+            validade: $("#validade").val(),
+            preco: $("#preco").val().replace(".", "."),
+            tempo: $("#tempo").val(),
+        }
+        console.log(cadastrar);
+        cadastrar.preco = parseFloat($("#preco").val().replace(",", "."));
+        $.post('@Url.Action("Cadastrar", "Produto")', cadastrar)
+
+            .done(function(mensage) {
+                alert("Cadastro Realizado")
+            })
+            .fail(function(error) {
+                console.log(error.responseText);
+            });
+    }
+    
+
+</script>
